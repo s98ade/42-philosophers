@@ -6,7 +6,8 @@ CC = gcc
 
 SRCS = $(addprefix ./src/, main.c \
 						   utils1.c \
-						   utils2.c)
+						   utils2.c \
+						   init_data.c)
 
 HEADER = -I ./includes
 

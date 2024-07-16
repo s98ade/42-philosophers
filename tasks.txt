@@ -33,8 +33,9 @@
 # TODO
     - test arg-checkers
     - test error-handler
-    - init_data
-
+    - init forks in init_data
+----------------------------------------------------------------------------------------
 
 # LOGS
     16.07.: added args checker
+    16.07.: added init of data
