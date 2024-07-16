@@ -31,8 +31,10 @@
 ----------------------------------------------------------------------------------------
 
 # TODO
-    - arg-checkers
-    - error-handler
+    - test arg-checkers
+    - test error-handler
+    - init_data
 
 
 # LOGS
+    16.07.: added args checker

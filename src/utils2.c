@@ -6,13 +6,18 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:33:25 by sade              #+#    #+#             */
-/*   Updated: 2024/07/16 11:33:48 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/16 13:08:56 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void ft_error()
+int ft_strlen(char *str)
 {
-    
+    int i;
+
+    i = 0;
+    while(str[i] != '\0')
+        i++;
+    return(i);
 }
