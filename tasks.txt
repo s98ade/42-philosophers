@@ -1,0 +1,38 @@
+# REQUIREMENTS
+    -> as many forks as philos
+    -> philo has to take right and left fork to eat
+    -> once finished eating they go to sleep
+    -> after sleeping they start thinking
+    -> simulation stops when each philo dies of starvation
+
+    -> no global vars
+
+    -> takes following as args: (1)num_philos (2)time_until_death (3)time_to_eat (4)time_to_sleep [(5)num_of_times_each_philo_must_eat]
+        (1) num of philos and forks
+        (2) in milsec: if philo didn't start eating time until philo starve
+        (3) in milsec: time it takes for a philo to eat; during this they have to hold two forks
+        (4) in milsec: how long a philo will sleep
+        (5) optional: if ALL philos have eating a specified time, the simulation stops; else simulation goes on until one philo dies
+
+    -> philo id ranges from 1 to num_philos
+
+    -> each philo should be a thread
+
+    -> duplicating forks not allowed, therefore forks should be protected with a mutex
+
+    -> program has to put out to stdout: (where philoX has philo id)
+        - timestamp_in_ms philoX has taken a fork
+        - timestamp_in_ms philoX is eating
+        - timestamp_in_ms philoX is sleeping
+        - timestamp_in_ms philoX is thinking
+        - timestamp_in_ms philoX died
+
+    -> data races has to be avoided!
+----------------------------------------------------------------------------------------
+
+# TODO
+    - arg-checkers
+    - error-handler
+
+
+# LOGS
