@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:44:52 by sade              #+#    #+#             */
-/*   Updated: 2024/07/18 16:43:17 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/20 14:28:11 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ typedef struct s_philo
 void init_data(t_philo *philos, t_data *data, char **argv);
 void init_philos(t_philo *philos, t_data *data, char **argv);
 void init_forks(t_philo *philos, int num_philos, int i);
+
+/* threads */
+int create_threads(t_philo *philos);
 
 /* utils1 */
 void ft_error(char *msg, t_data *data, int flag);
