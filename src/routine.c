@@ -6,13 +6,16 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:38:44 by sade              #+#    #+#             */
-/*   Updated: 2024/07/20 14:39:02 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/21 13:09:24 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void *routine()
+void *routine(void *p)
 {
-    
+    t_philo *philo;
+
+    philo = (t_philo *)p;
+       
 }

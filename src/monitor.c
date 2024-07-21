@@ -6,13 +6,18 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:37:16 by sade              #+#    #+#             */
-/*   Updated: 2024/07/20 14:38:09 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/21 13:10:55 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 void *monitor_loop()
+{
+    
+}
+
+int philo_dead(t_philo *philo)
 {
     
 }

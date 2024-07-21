@@ -31,12 +31,13 @@
 ----------------------------------------------------------------------------------------
 
 # TODO
+    - write philo routine (with mutex)
     - test arg-checkers
     - test error-handler
-    - write threads
 ----------------------------------------------------------------------------------------
 
 # LOGS
     16.07.: added args checker
     16.07.: added init of data
     18.07.: finnished init_data
+    20.07.: finished thread_create

@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:48:27 by sade              #+#    #+#             */
-/*   Updated: 2024/07/20 14:36:58 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/21 13:05:48 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int create_threads(t_data *data)
     i = 0;
     while(i < data->num_philos)
     {
-        if(pthread_create(&data->philos[i].thread, NULL, &routine, program->ohilos[i]) != 0)
+        if(pthread_create(&data->philos[i].thread, NULL, &routine, &data->philos[i]) != 0)
             //return(destroy_all());
         i++;
     }

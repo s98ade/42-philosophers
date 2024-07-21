@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:33:25 by sade              #+#    #+#             */
-/*   Updated: 2024/07/20 09:50:18 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/21 13:39:00 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,15 @@ size_t	get_time(void)
 	if (gettimeofday(&time, NULL) == -1)
 		ft_error("Error\nGetting time failed\n", NULL, NULL);
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+
+// busy-wait loop -> not very CPU efficient, consumes a lot of processor power
+void ft_usleep(size_t ms)
+{
+    size_t start;
+
+    start = get_time();
+    while((get_time() - start) < ms)
+        usleep(500); 
 }
