@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:28:28 by sade              #+#    #+#             */
-/*   Updated: 2024/07/18 16:42:54 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/22 11:04:02 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,3 @@ void init_data(t_philo *philos, t_data *data, char **argv)
         ft_error("Error\nMutex\n", NULL, NULL);
     init_philo(&philos, &data, argv);   
 }
-

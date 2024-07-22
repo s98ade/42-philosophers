@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:44:52 by sade              #+#    #+#             */
-/*   Updated: 2024/07/21 13:29:38 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/22 14:00:02 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,16 @@ int create_threads(t_data *data);
 
 /* routine */
 void *routine(void *p);
+int takes_forks(t_philo *philo);
+void philo_eats(t_philo *philo);
+void philo_sleep_think(t_philo *philo);
 
 /* monitor */
-void *monitor_loop();
+void *monitor_loop(void *ptr);
+int is_deadflag(t_data *data);
 int philo_dead(t_philo *philo);
-
+int check_deaths(t_philo *philos);
+int ate_max_meals(t_philo *philos);
 
 /* utils1 */
 void ft_error(char *msg, t_data *data, int flag);
@@ -75,5 +80,7 @@ void check_args(char **argv);
 int ft_strlen(char *str);
 size_t	get_time(void);
 void ft_usleep(size_t ms);
+int destroy_all(t_data *data);
+void print_msg(char *str, t_philo *philo, t_data *data);
 
 #endif

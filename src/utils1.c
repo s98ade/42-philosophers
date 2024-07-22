@@ -6,18 +6,17 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:08:07 by sade              #+#    #+#             */
-/*   Updated: 2024/07/20 09:49:08 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/22 11:02:51 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+// refactor - free() not needed
 void ft_error(char *msg, t_data *data, int flag)
 {
     (void)data; //remove later
     (void)flag;//remove later
-    /* if(flag == 1)
-        free_data(); */
     write(2, msg, ft_strlen(msg));
     exit(1);   
 }
@@ -67,7 +66,7 @@ long	ft_atol(const char *str)
 	if (str[i] != 0)
 		ft_error("Error\nNon numeric value\n", NULL, NULL);
 	if (nbr > INT_MAX)
-		ft_error("Error\nValue biiger than INT_MAX\n", NULL, NULL);
+		ft_error("Error\nValue bigger than INT_MAX\n", NULL, NULL);
 	return (nbr);
 }
 

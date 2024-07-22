@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:45:02 by sade              #+#    #+#             */
-/*   Updated: 2024/07/18 16:45:40 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/22 14:03:22 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int main(int argc, char **argv)
         ft_error("Argument error\n", NULL, NULL);
     check_args(argv);
     init_data(&philos,&data, argv);
-    return(0);
+    create_threads(&data);
+    destroy_all(&data);
 }
