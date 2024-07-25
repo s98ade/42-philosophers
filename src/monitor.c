@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:37:16 by sade              #+#    #+#             */
-/*   Updated: 2024/07/22 13:48:10 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/25 19:08:57 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,20 @@
 
 int is_deadflag(t_data *data)
 {
-    // loop that continuously checks whether a philo died
-    // if so, sets the deat_flag to one
+    pthread_mutex_lock(&data->dead_lock);
+    pthread_mutex_unlock(&data->dead_lock);
 }
 
-int philo_dead(t_philo *philo)
+int is_dead(t_philo *philo)
 {
-    //checks whether a philo died
+    pthread_mutex_lock(philo->eating_lock);
+    if(get_time() - philo->last_meal >= philo->time_to_die)
+    {
+        pthread_mutex_unlock(philo->eating_lock);
+        return (1);
+    }
+    pthread_mutex_unlock(philo->eating_lock);
+    return (0);
 }
 
 int check_deaths(t_philo *philos)

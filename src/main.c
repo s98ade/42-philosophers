@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:45:02 by sade              #+#    #+#             */
-/*   Updated: 2024/07/22 14:03:22 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/25 18:55:45 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ int main(int argc, char **argv)
     init_data(&philos,&data, argv);
     create_threads(&data);
     destroy_all(&data);
+    return (0);
 }

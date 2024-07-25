@@ -31,10 +31,10 @@
 ----------------------------------------------------------------------------------------
 
 # TODO
-    - write philo routine and monitor functions (with mutex)
+    - monitor functions (with mutex)
+    - test philo routine
     - test arg-checkers
     - test error-handler
-    - QUESTION: is malloc necessary in this program? (for simulation)
 ----------------------------------------------------------------------------------------
 
 # LOGS
@@ -43,3 +43,4 @@
     18.07.: finnished init_data
     20.07.: finished thread_create
     22.07.: base function monitor and routine set
+    25.07.: finnished routine functions
