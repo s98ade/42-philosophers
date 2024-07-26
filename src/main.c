@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:45:02 by sade              #+#    #+#             */
-/*   Updated: 2024/07/25 18:55:45 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/26 09:12:29 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(int argc, char **argv)
     t_philo philos[MAX_PHILO];
 
     if(argc != 5 || argc != 6)
-        ft_error("Argument error\n", NULL, NULL);
+        ft_error("Argument error\n");
     check_args(argv);
     init_data(&philos,&data, argv);
     create_threads(&data);

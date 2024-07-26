@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:44:52 by sade              #+#    #+#             */
-/*   Updated: 2024/07/25 19:03:48 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/26 09:33:41 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ void philo_sleep_think(t_philo *philo);
 
 /* monitor */
 void *monitor_loop(void *ptr);
-int is_deadflag(t_data *data);
+int is_deadflag(t_philo *philo);
 int is_dead(t_philo *philo);
-int check_deaths(t_philo *philos);
-int ate_max_meals(t_philo *philos);
+int check_deaths(t_philo *philo);
+int ate_max_meals(t_philo *philo);
 
 /* utils1 */
-void ft_error(char *msg, t_data *data, int flag);
+void ft_error(char *msg);
 int ft_isnum(char *str);
 int ft_isspace(char c);
 long	ft_atol(const char *str);

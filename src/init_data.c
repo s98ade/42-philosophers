@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:28:28 by sade              #+#    #+#             */
-/*   Updated: 2024/07/22 11:04:02 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/26 09:10:51 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void init_philos(t_philo *philos, t_data *data, char **argv)
         philos[i].time_to_sleep = ft_atol(argv[4]);
         philos[i].time_to_die = ft_atol(argv[2]);
         if(pthread_mutex_init(&philos[i].eating_lock, NULL) != 0)
-            ft_error("Error\nMutex\n", NULL, NULL);
+            ft_error("Error\nMutex\n");
         if(argv[5])
             data->max_meals = -1;
         else
@@ -41,7 +41,7 @@ void init_forks(t_philo *philos, int num_philos, int i)
     while(i < num_philos)
     {
         if(pthread_mutex_init(&philos[i].r_fork, NULL) != 0)
-            ft_error("Error: Mutex\n", NULL, NULL);
+            ft_error("Error: Mutex\n");
         i++;
         if(i == 0 && num_philos != 1)
             philos[i].l_fork = &philos[num_philos - 1].r_fork;
@@ -61,8 +61,8 @@ void init_data(t_philo *philos, t_data *data, char **argv)
     else
         data->max_meals = -1;
     if(pthread_mutex_init(&data->dead_lock, NULL) != 0)
-        ft_error("Error\nMutex\n", NULL, NULL);    
+        ft_error("Error\nMutex\n");    
     if(pthread_mutex_init(&data->write_lock, NULL) != 0)
-        ft_error("Error\nMutex\n", NULL, NULL);
+        ft_error("Error\nMutex\n");
     init_philo(&philos, &data, argv);   
 }

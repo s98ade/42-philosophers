@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:33:25 by sade              #+#    #+#             */
-/*   Updated: 2024/07/22 11:15:56 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/26 09:12:12 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ size_t	get_time(void)
 	struct timeval	time;
 
 	if (gettimeofday(&time, NULL) == -1)
-		ft_error("Error\nGetting time failed\n", NULL, NULL);
+		ft_error("Error\nGetting time failed\n");
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
