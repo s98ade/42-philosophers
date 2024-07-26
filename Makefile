@@ -1,4 +1,4 @@
-NAME = philo  
+NAME = philo
 
 RM = rm -f
 
@@ -17,7 +17,7 @@ HEADER = -I ./includes
 CFLAGS = -g -Wall -Wextra -Werror -pthread $(HEADER)
 
 $(NAME) :
-	@echo "\n$(BGreen)Building target file: $(NAME)"
+	@echo "\n$(BGreen)*** Building target file: $(NAME) ***\n"
 	@$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
 	@echo "$(BGreen)EAT 🍽️   SLEEP 😴   THINK 🤔  or  DIE 💀"
 
@@ -31,9 +31,9 @@ fclean : clean
 	@$(RM) $(NAME)
 
 clean :
-	@echo "$(BBlue)Cleaning......"
+	@echo "\n$(BBlue)Cleaning......"
 	@$(RM) $(NAME)
-	@echo "............ READY"
+	@echo "............ READY\n"
 
 re : fclean all
 	@echo "$(BGreen)Program successfully recompiled$(NC)"

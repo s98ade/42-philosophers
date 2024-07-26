@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:44:52 by sade              #+#    #+#             */
-/*   Updated: 2024/07/26 09:33:41 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/26 17:53:29 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_data
     int max_meals;
     pthread_mutex_t dead_lock;
     pthread_mutex_t write_lock;
-    t_philo *philos;
 }              t_data;
 
 typedef struct s_philo
@@ -41,7 +40,7 @@ typedef struct s_philo
    size_t time_to_die;
    size_t start_time;
    size_t last_meal;
-   pthread_mutex_t *eating_lock;
+   pthread_mutex_t eating_lock;
    pthread_mutex_t *r_fork;
    pthread_mutex_t *l_fork;
    pthread_t thread;
@@ -54,7 +53,7 @@ void init_philos(t_philo *philos, t_data *data, char **argv);
 void init_forks(t_philo *philos, int num_philos, int i);
 
 /* threads */
-int create_threads(t_data *data);
+int create_threads(t_philo *philos);
 
 /* routine */
 void *routine(void *p);
@@ -64,7 +63,7 @@ void philo_sleep_think(t_philo *philo);
 
 /* monitor */
 void *monitor_loop(void *ptr);
-int is_deadflag(t_philo *philo);
+void is_deadflag(t_philo *philo);
 int is_dead(t_philo *philo);
 int check_deaths(t_philo *philo);
 int ate_max_meals(t_philo *philo);
@@ -80,7 +79,7 @@ void check_args(char **argv);
 int ft_strlen(char *str);
 size_t	get_time(void);
 void ft_usleep(size_t ms);
-int destroy_all(t_data *data);
+int destroy_all(t_philo *philos);
 void print_msg(char *str, t_philo *philo, t_data *data);
 
 #endif

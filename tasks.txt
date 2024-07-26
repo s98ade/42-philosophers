@@ -31,7 +31,10 @@
 ----------------------------------------------------------------------------------------
 
 # TODO
-    - monitor functions (with mutex)
+-> debug all
+       - program compiles but does not pass argc-test
+
+    - test monitor function
     - test philo routine
     - test arg-checkers
     - test error-handler
@@ -44,3 +47,5 @@
     20.07.: finished thread_create
     22.07.: base function monitor and routine set
     25.07.: finnished routine functions
+    26.07.: finnished monitoring functions
+    26.07.: refactored code

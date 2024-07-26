@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:38:44 by sade              #+#    #+#             */
-/*   Updated: 2024/07/26 09:45:28 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/26 17:56:38 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int takes_forks(t_philo *philo)
 
 void philo_eats(t_philo *philo)
 {
-    if(takes_forks(philo) == 1);
+    if(takes_forks(philo) == 1)
         return ; 
     print_msg("is eating 🍝", philo, philo->data);
-    pthread_mutex_lock(philo->eating_lock);
+    pthread_mutex_lock(&philo->eating_lock);
     philo->last_meal = get_time();
     ++philo->times_eaten;
-    pthread_mutex_unlock(philo->eating_lock);
+    pthread_mutex_unlock(&philo->eating_lock);
     ft_usleep(philo->time_to_eat);
     pthread_mutex_unlock(philo->r_fork);
     pthread_mutex_unlock(philo->l_fork);
@@ -54,7 +54,7 @@ void *routine(void *p)
     philo = (t_philo *)p;
     if(philo->id % 2 == 0)
         ft_usleep(1);
-    while(!is_deadflag(philo->data))
+    while(!check_deaths(philo))
     {
         philo_eats(philo);
         philo_sleep_think(philo);

@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:33:25 by sade              #+#    #+#             */
-/*   Updated: 2024/07/26 09:12:12 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/26 17:39:43 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,19 @@ void ft_usleep(size_t ms)
         usleep(500); 
 }
 
-int destroy_all(t_data *data)
+int destroy_all(t_philo *philos)
 {
     int i;
 
     i = 0;
-    while(i < data->num_philos)
+    while(i++ < philos->data->num_philos)
     {
-        pthread_mutex_destroy(data->philos[i].l_fork);
-        pthread_mutex_destroy(data->philos[i].r_fork);
+        pthread_mutex_destroy(philos[i].l_fork);
+        pthread_mutex_destroy(philos[i].r_fork);
+        pthread_mutex_destroy(&philos->eating_lock);
     }
-    pthread_mutex_destroy(&data->dead_lock);
-    pthread_mutex_destroy(&data->philos->eating_lock);
-    pthread_mutex_destroy(&data->write_lock);
+    pthread_mutex_destroy(&philos->data->dead_lock);
+    pthread_mutex_destroy(&philos->data->write_lock);
     return(1);
 }
 
@@ -64,7 +64,7 @@ void print_msg(char *str, t_philo *philo, t_data *data)
 
     pthread_mutex_lock(&data->write_lock);
     time = get_time() - philo->start_time;
-    if(!check_death(philo))
+    if(!check_deaths(philo))
         printf("%zu %d %s\n", time, philo->id, str);
     pthread_mutex_unlock(&data->write_lock);
 }
