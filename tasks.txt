@@ -32,12 +32,9 @@
 
 # TODO
 -> debug all
-       - program compiles but does not pass argc-test
+       - program runs but there are data races and leads to a program crash
 
-    - test monitor function
-    - test philo routine
-    - test arg-checkers
-    - test error-handler
+    - figure out where data races
 ----------------------------------------------------------------------------------------
 
 # LOGS
@@ -49,3 +46,6 @@
     25.07.: finnished routine functions
     26.07.: finnished monitoring functions
     26.07.: refactored code
+    26.07.: tested arg check
+    26.07.: tested error handling
+    26.07.: ISSUE: DATA RACES

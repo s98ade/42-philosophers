@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:38:44 by sade              #+#    #+#             */
-/*   Updated: 2024/07/26 17:56:38 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/26 22:04:38 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void *routine(void *p)
     t_philo *philo;
 
     philo = (t_philo *)p;
+    printf("start routine for %d\n", philo->id);
     if(philo->id % 2 == 0)
         ft_usleep(1);
     while(!check_deaths(philo))
