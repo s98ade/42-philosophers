@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:33:25 by sade              #+#    #+#             */
-/*   Updated: 2024/07/26 21:54:32 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/27 11:05:00 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void ft_usleep(size_t ms)
 {
     size_t start;
 
+    printf("-> entering ft_usleep\n"); /* TEST */
     start = get_time();
     while((get_time() - start) < ms)
         usleep(500); 

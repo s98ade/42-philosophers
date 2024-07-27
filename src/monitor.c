@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:37:16 by sade              #+#    #+#             */
-/*   Updated: 2024/07/26 21:58:14 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/27 11:05:42 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void is_deadflag(t_philo *philo)
 {
+    printf("-> entering is_deadflag() with philo: %d\n", philo->id); /* TEST */
     pthread_mutex_lock(&philo->data->dead_lock);
     philo->data->dead_flag = 1;
     pthread_mutex_unlock(&philo->data->dead_lock);
@@ -21,6 +22,7 @@ void is_deadflag(t_philo *philo)
 
 int is_dead(t_philo *philo)
 {
+    printf("-> entering is_dead() with philo: %d\n", philo->id); /* TEST */
     pthread_mutex_lock(&philo->eating_lock);
     if(get_time() - philo->last_meal >= philo->time_to_die)
     {
@@ -36,7 +38,8 @@ int check_deaths(t_philo *philo)
 {
     int i;
 
-    i = 0;
+    i = -1;
+    printf("-> entering check_deaths() with philo: %d\n", philo->id); /* TEST */
     while(i++ < philo->data->num_philos)
     {
         if(is_dead(&philo[i]))
@@ -52,7 +55,8 @@ int ate_max_meals(t_philo *philo)
 {
     int i;
 
-    i = 0;
+    i = -1;
+    printf("-> entering ate_max_meals() with philo: %d\n", philo->id); /* TEST */
     if(philo->times_eaten == -1)
         return(0);
     while(i++ < philo->data->num_philos)
@@ -65,6 +69,7 @@ int ate_max_meals(t_philo *philo)
         }
         pthread_mutex_unlock(&philo[i].eating_lock);
     }
+    is_deadflag(philo);
     return(1);
 }
 
@@ -74,7 +79,10 @@ void *monitor_loop(void *ptr)
     
     philos = (t_philo *)ptr;
     while(1)
+    {
+        printf("* Monitor running *\n"); /* TEST */
         if(ate_max_meals(philos) == 1 || check_deaths(philos) == 1)
             break ;
+    }
     return(ptr);    
 }

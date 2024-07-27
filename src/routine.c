@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:38:44 by sade              #+#    #+#             */
-/*   Updated: 2024/07/26 22:04:38 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/27 10:42:01 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void philo_eats(t_philo *philo)
 
 void philo_sleep_think(t_philo *philo)
 {
+    printf("-> entering philo_sleep_think() with philo: %d\n", philo->id);
     print_msg("is sleeping 😴", philo, philo->data);
     ft_usleep(philo->time_to_sleep);
     print_msg("is thinking 🤔", philo, philo->data);
@@ -52,7 +53,7 @@ void *routine(void *p)
     t_philo *philo;
 
     philo = (t_philo *)p;
-    printf("start routine for %d\n", philo->id);
+    printf("* start routine for philo %d *\n", philo->id); /* TEST */
     if(philo->id % 2 == 0)
         ft_usleep(1);
     while(!check_deaths(philo))

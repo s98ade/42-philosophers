@@ -33,8 +33,11 @@
 # TODO
 -> debug all
        - program runs but there are data races and leads to a program crash
+       - program stuck and crashes in monitor functions
+       - routine thread creation faulty?: creates for the same philo twice?
+       - enters check_deaths() but breaks there? Other required functions not entered
 
-    - figure out where data races
+    - figure out where data races are
 ----------------------------------------------------------------------------------------
 
 # LOGS
@@ -48,4 +51,5 @@
     26.07.: refactored code
     26.07.: tested arg check
     26.07.: tested error handling
-    26.07.: ISSUE: DATA RACES
+    26.07.: ISSUE FOUND: DATA RACES
+    27.07.: added bunch of printf-debugs
