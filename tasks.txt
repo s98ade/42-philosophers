@@ -53,3 +53,4 @@
     26.07.: tested error handling
     26.07.: ISSUE FOUND: DATA RACES
     27.07.: added bunch of printf-debugs
+    28.07.: fixed passing data issue -> forgot to add data-pointer for each philo in init_data() -.-

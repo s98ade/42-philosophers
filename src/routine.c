@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:38:44 by sade              #+#    #+#             */
-/*   Updated: 2024/07/27 10:42:01 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/28 14:36:11 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int takes_forks(t_philo *philo)
 {
+    printf("-> entering --takes_forks()-- with philo: %d\n", philo->id); /* TEST */
     pthread_mutex_lock(philo->r_fork);
     print_msg("has taken a fork 🍽️", philo, philo->data);
     if(philo->data->num_philos == 1)
@@ -28,6 +29,7 @@ int takes_forks(t_philo *philo)
 
 void philo_eats(t_philo *philo)
 {
+    printf("-> entering --philo_eats()-- with philo: %d\n", philo->id); /* TEST */
     if(takes_forks(philo) == 1)
         return ; 
     print_msg("is eating 🍝", philo, philo->data);
@@ -42,24 +44,54 @@ void philo_eats(t_philo *philo)
 
 void philo_sleep_think(t_philo *philo)
 {
-    printf("-> entering philo_sleep_think() with philo: %d\n", philo->id);
+    printf("-> entering --philo_sleep_think()-- with philo: %d\n", philo->id); /* TEST */
     print_msg("is sleeping 😴", philo, philo->data);
     ft_usleep(philo->time_to_sleep);
     print_msg("is thinking 🤔", philo, philo->data);
 }
 
-void *routine(void *p)
+/* void *routine(void *p)
 {
     t_philo *philo;
 
     philo = (t_philo *)p;
-    printf("* start routine for philo %d *\n", philo->id); /* TEST */
+    printf("* start routine for philo %d *\n", philo->id);
     if(philo->id % 2 == 0)
         ft_usleep(1);
-    while(!check_deaths(philo))
+    while(!is_deadflag(philo))
     {
         philo_eats(philo);
         philo_sleep_think(philo);
     }
     return(p);   
+} */
+
+void *routine(void *p) // test function
+{
+    t_philo *philo;
+
+    printf("Starting routine\n");
+    philo = (t_philo *)p;
+    if (philo == NULL) {
+        printf("philo is NULL\n");
+        return NULL;
+    }
+
+    printf("Philo ID: %d\n", philo->id);
+    printf("Philo Data: %p\n", (void *)philo->data);
+    if (philo->data != NULL) {
+        printf("Num Philos: %d\n", philo->data->num_philos);
+    } else {
+        printf("philo->data is NULL\n");
+    }
+
+    if (philo->id % 2 == 0)
+        ft_usleep(1);
+
+    while (!check_deaths(philo))
+    {
+        philo_eats(philo);
+        philo_sleep_think(philo);
+    }
+    return p;
 }

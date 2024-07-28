@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:44:52 by sade              #+#    #+#             */
-/*   Updated: 2024/07/26 21:50:27 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/28 13:12:00 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void philo_sleep_think(t_philo *philo);
 
 /* monitor */
 void *monitor_loop(void *ptr);
-void is_deadflag(t_philo *philo);
+int is_deadflag(t_philo *philo);
 int is_dead(t_philo *philo);
 int check_deaths(t_philo *philo);
 int ate_max_meals(t_philo *philo);
