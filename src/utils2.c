@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:33:25 by sade              #+#    #+#             */
-/*   Updated: 2024/07/27 11:05:00 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/28 15:19:57 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int ft_strlen(char *str)
     return(i);
 }
 
-size_t	get_time(void)
+long long	get_time(void)
 {
 	struct timeval	time;
 
@@ -37,7 +37,6 @@ void ft_usleep(size_t ms)
 {
     size_t start;
 
-    printf("-> entering ft_usleep\n"); /* TEST */
     start = get_time();
     while((get_time() - start) < ms)
         usleep(500); 
@@ -61,11 +60,11 @@ int destroy_all(t_philo *philos)
 
 void print_msg(char *str, t_philo *philo, t_data *data)
 {
-    size_t time;
+    long long time;
 
     pthread_mutex_lock(&data->write_lock);
     time = get_time() - philo->start_time;
     if(!check_deaths(philo))
-        printf("%zu %d %s\n", time, philo->id, str);
+        printf("%lld %d %s\n", time, philo->id, str);
     pthread_mutex_unlock(&data->write_lock);
 }

@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:28:28 by sade              #+#    #+#             */
-/*   Updated: 2024/07/28 14:47:52 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/28 15:12:52 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void init_forks(t_philo *philos, pthread_mutex_t *forks, int num_philos)
             ft_error("Error: Mutex\n");
         i++;
     }
-
     i = 0;
     while (i < num_philos)
     {

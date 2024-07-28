@@ -32,12 +32,12 @@
 
 # TODO
 -> debug all
-       - program runs but there are data races and leads to a program crash
-       - program stuck and crashes in monitor functions
-       - routine thread creation faulty?: creates for the same philo twice?
-       - enters check_deaths() but breaks there? Other required functions not entered
+       -> 28.07.: issue was caused because of philos not being able to access their data-struct; fixed thread_create
 
-    - figure out where data races are
+       - routine is being executed, but crashes -> philo not dying
+       - check death_checks and how time is being initialized and written
+       - check timestamp printing
+       - check logic of monitor and routine functions - something is off there...might cause the crashes
 ----------------------------------------------------------------------------------------
 
 # LOGS
@@ -54,3 +54,4 @@
     26.07.: ISSUE FOUND: DATA RACES
     27.07.: added bunch of printf-debugs
     28.07.: fixed passing data issue -> forgot to add data-pointer for each philo in init_data() -.-
+    28.07.: fixed some messed up function calls

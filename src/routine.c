@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:38:44 by sade              #+#    #+#             */
-/*   Updated: 2024/07/28 14:36:11 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/28 20:38:12 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void philo_eats(t_philo *philo)
     ++philo->times_eaten;
     pthread_mutex_unlock(&philo->eating_lock);
     ft_usleep(philo->time_to_eat);
-    pthread_mutex_unlock(philo->r_fork);
     pthread_mutex_unlock(philo->l_fork);
+    pthread_mutex_unlock(philo->r_fork);
 }
 
 void philo_sleep_think(t_philo *philo)
@@ -55,7 +55,7 @@ void philo_sleep_think(t_philo *philo)
     t_philo *philo;
 
     philo = (t_philo *)p;
-    printf("* start routine for philo %d *\n", philo->id);
+    //printf("* start routine for philo %d *\n", philo->id);
     if(philo->id % 2 == 0)
         ft_usleep(1);
     while(!is_deadflag(philo))
@@ -78,7 +78,8 @@ void *routine(void *p) // test function
     }
 
     printf("Philo ID: %d\n", philo->id);
-    printf("Philo Data: %p\n", (void *)philo->data);
+    printf("Shared data at: %p\n", (void *)philo->data);
+    printf("Philos data at: %p\n", (void *)philo);
     if (philo->data != NULL) {
         printf("Num Philos: %d\n", philo->data->num_philos);
     } else {
@@ -88,7 +89,7 @@ void *routine(void *p) // test function
     if (philo->id % 2 == 0)
         ft_usleep(1);
 
-    while (!check_deaths(philo))
+    while (!is_deadflag(philo))
     {
         philo_eats(philo);
         philo_sleep_think(philo);

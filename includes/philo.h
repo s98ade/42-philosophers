@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:44:52 by sade              #+#    #+#             */
-/*   Updated: 2024/07/28 13:12:00 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/28 15:22:17 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ typedef struct s_philo
 {
    int id;
    int times_eaten;
-   size_t time_to_eat;
-   size_t time_to_sleep;
-   size_t time_to_die;
-   size_t start_time;
-   size_t last_meal;
+   long time_to_eat;
+   long time_to_sleep;
+   long time_to_die;
+   long start_time;
+   long long last_meal;
    pthread_mutex_t eating_lock;
    pthread_mutex_t *r_fork;
    pthread_mutex_t *l_fork;
@@ -77,7 +77,7 @@ void check_args(char **argv);
 
 /* utils2 */
 int ft_strlen(char *str);
-size_t	get_time(void);
+long long	get_time(void);
 void ft_usleep(size_t ms);
 int destroy_all(t_philo *philos);
 void print_msg(char *str, t_philo *philo, t_data *data);
