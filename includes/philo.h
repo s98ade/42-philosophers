@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:44:52 by sade              #+#    #+#             */
-/*   Updated: 2024/07/29 16:57:12 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/29 18:52:31 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void check_args(char **argv);
 /* utils2 */
 int ft_strlen(char *str);
 long long	get_time(void);
-void ft_usleep(size_t ms);
+int ft_usleep(size_t ms);
 int destroy_all(t_philo *philos);
 void print_msg(char *str, t_philo *philo, t_data *data);
 

@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:48:27 by sade              #+#    #+#             */
-/*   Updated: 2024/07/29 16:08:36 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/29 18:06:09 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int create_threads(t_philo *philos, t_data *data)
 
     if(pthread_create(&monitor, NULL, &monitor_loop, philos) != 0)
         return(destroy_all(philos));
-    //printf("** MONITOR created **\n"); /* TEST */
+    printf("** MONITOR STARTED **\n"); /* TEST */
     i = 0;
     //printf("[T_C]Num of philos: %d\n", data->num_philos); /* TEST */
     while(i < data->num_philos)
     {
         if(pthread_create(&philos[i].thread, NULL, &routine, &philos[i]) != 0)
             return(destroy_all(philos));
-        //printf("** created ROUTINE thread for philo [%d] **\n", philos[i].id); /* TEST */
+        printf("** CREATED ROUTINE FOR [%d] **\n", philos[i].id); /* TEST */
         i++;
     }
     i = 0;

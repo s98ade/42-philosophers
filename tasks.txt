@@ -39,6 +39,8 @@
        - check timestamp printing
        - check logic of monitor and routine functions - something is off there...might cause the crashes
        - fork init is so far correct
+       - (PROBLEM IN ATE_MAX_MEALS) Solved: passed the wrong parameter for max_meals input
+       -(PROBLEM IN CHECK_DEATHS) dead_lock? after overstepping the time_to_die does not continue with print_msg etc.
 ----------------------------------------------------------------------------------------
 
 # LOGS

@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:33:25 by sade              #+#    #+#             */
-/*   Updated: 2024/07/28 15:19:57 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/29 19:12:52 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@ long long	get_time(void)
 
 
 // busy-wait loop -> not very CPU efficient, consumes a lot of processor power
-void ft_usleep(size_t ms)
+int ft_usleep(size_t ms)
 {
     size_t start;
 
     start = get_time();
     while((get_time() - start) < ms)
-        usleep(500); 
+        usleep(100);
+    return(0); 
 }
 
 int destroy_all(t_philo *philos)
