@@ -38,6 +38,7 @@
        - check death_checks and how time is being initialized and written
        - check timestamp printing
        - check logic of monitor and routine functions - something is off there...might cause the crashes
+       - fork init is so far correct
 ----------------------------------------------------------------------------------------
 
 # LOGS
@@ -55,3 +56,4 @@
     27.07.: added bunch of printf-debugs
     28.07.: fixed passing data issue -> forgot to add data-pointer for each philo in init_data() -.-
     28.07.: fixed some messed up function calls
+    29.07.: refactor fork init

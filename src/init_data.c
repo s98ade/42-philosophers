@@ -6,19 +6,18 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:28:28 by sade              #+#    #+#             */
-/*   Updated: 2024/07/28 15:12:52 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/29 17:10:34 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void init_philos(t_philo *philos, t_data *data, char **argv)
+void init_philos(t_philo *philos, t_data *data, pthread_mutex_t *forks, char **argv)
 {
-    pthread_mutex_t forks[MAX_PHILO];
     int i;
 
-    i = -1;
-    while(++i < data->num_philos)
+    i = 0;
+    while(i < data->num_philos)
     {
         philos[i].id = i + 1;
         philos[i].times_eaten = 0;
@@ -30,41 +29,30 @@ void init_philos(t_philo *philos, t_data *data, char **argv)
         philos[i].data = data; //setting data pointer for each philo
         if(pthread_mutex_init(&philos[i].eating_lock, NULL) != 0)
             ft_error("Error\nMutex\n");
-        if(argv[5])
-            data->max_meals = ft_atol(argv[5]);
-        else
-            data->max_meals = -1;
-        init_forks(philos, forks, data->num_philos);
+        philos[i].l_fork = &forks[i];
+        philos[i].r_fork = &forks[(i + 1) % data->num_philos];
+        printf("Philosopher %d initialized with left fork %p and right fork %p\n", 
+                philos[i].id, (void*)philos[i].l_fork, (void*)philos[i].r_fork);
+        i++;
     }
 }
 
-void init_forks(t_philo *philos, pthread_mutex_t *forks, int num_philos)
+void init_forks(pthread_mutex_t *forks, int num_philos)
 {
-    int i;
+     int i;
 
-    i = 0;
-    while (i < num_philos)
-    {
-        philos[i].r_fork = &forks[i];
-        if (pthread_mutex_init(philos[i].r_fork, NULL) != 0)
-            ft_error("Error: Mutex\n");
+     i = 0;
+     while(i < num_philos)
+     {
+        pthread_mutex_init(&forks[i], NULL);
         i++;
-    }
-    i = 0;
-    while (i < num_philos)
-    {
-        if (i == 0 && num_philos != 1)
-            philos[i].l_fork = philos[num_philos - 1].r_fork;
-        else if (num_philos != 1)
-            philos[i].l_fork = philos[i - 1].r_fork;
-        else
-            philos[i].l_fork = NULL; 
-        i++;  
-    }
+     } 
 }
 
 void init_data(t_philo *philos, t_data *data, char **argv)
 {
+    pthread_mutex_t forks[MAX_PHILO];
+    
     data->num_philos = ft_atol(argv[1]);
     data->dead_flag = 0;
     if(argv[5])
@@ -75,5 +63,6 @@ void init_data(t_philo *philos, t_data *data, char **argv)
         ft_error("Error\nMutex: dead_lock\n");    
     if(pthread_mutex_init(&data->write_lock, NULL) != 0)
         ft_error("Error\nMutex: write_lock\n");
-    init_philos(philos, data, argv);   
+    init_forks(forks, data->num_philos);
+    init_philos(philos, data, forks, argv);   
 }

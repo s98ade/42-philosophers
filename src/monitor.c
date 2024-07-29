@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:37:16 by sade              #+#    #+#             */
-/*   Updated: 2024/07/28 20:38:44 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/29 16:21:28 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int is_deadflag(t_philo *philo)
 {
-    printf("-> entering --is_deadflag()-- with philo: %d\n", philo->id); /* TEST */
+   // printf("-> entering --is_deadflag()-- with philo: %d\n", philo->id); /* TEST */
     pthread_mutex_lock(&philo->data->dead_lock);
     if(philo->data->dead_flag == 1)
     {
@@ -27,7 +27,7 @@ int is_deadflag(t_philo *philo)
 
 int is_dead(t_philo *philo)
 {
-    printf("-> entering --is_dead()-- with philo: %d\n", philo->id); /* TEST */
+   // printf("-> entering --is_dead()-- with philo: %d\n", philo->id); /* TEST */
     pthread_mutex_lock(&philo->eating_lock);
     if((get_time() - philo->last_meal) >= philo->time_to_die)
     {
@@ -44,8 +44,8 @@ int check_deaths(t_philo *philo)
     int i;
 
     i = 0;
-    printf("-> entering --check_deaths()-- with philo: %d\n", philo->id); /* TEST */
-    printf("[C_D]Num of philos: %d\n", philo->data->num_philos); /* TEST */
+   // printf("-> entering --check_deaths()-- with philo: %d\n", philo->id); /* TEST */
+   // printf("[C_D]Num of philos: %d\n", philo->data->num_philos); /* TEST */
     while(i < philo->data->num_philos)
     {
         if(is_dead(&philo[i]))
@@ -65,8 +65,8 @@ int ate_max_meals(t_philo *philo)
     int i;
 
     i = 0;
-    printf("[A_M_M]times_eaten of philo [%d]: %d\n", philo->id, philo->times_eaten); /* TEST */
-    printf("-> entering --ate_max_meals()-- with philo: %d\n", philo->id); /* TEST */
+    //printf("[A_M_M]times_eaten of philo [%d]: %d\n", philo->id, philo->times_eaten); /* TEST */
+    //printf("-> entering --ate_max_meals()-- with philo: %d\n", philo->id); /* TEST */
     if(philo->times_eaten == -1)
         return(0);
     while(i < philo->data->num_philos)

@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:44:52 by sade              #+#    #+#             */
-/*   Updated: 2024/07/28 15:22:17 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/29 16:57:12 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ typedef struct s_philo
 
 /* init_data */
 void init_data(t_philo *philos, t_data *data, char **argv);
-void init_philos(t_philo *philos, t_data *data, char **argv);
-void init_forks(t_philo *philos, pthread_mutex_t *forks, int num_philos);
+void init_philos(t_philo *philos, t_data *data, pthread_mutex_t *forks, char **argv);
+void init_forks(pthread_mutex_t *forks, int num_philos);
 
 /* threads */
 int create_threads(t_philo *philos, t_data *data);
