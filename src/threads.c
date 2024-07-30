@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 09:48:27 by sade              #+#    #+#             */
-/*   Updated: 2024/07/29 18:06:09 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/30 14:31:24 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int create_threads(t_philo *philos, t_data *data)
         printf("** CREATED ROUTINE FOR [%d] **\n", philos[i].id); /* TEST */
         i++;
     }
+    printf("philo id is here:::%d\n", philos[i].id);
     i = 0;
     if(pthread_join(monitor, NULL) != 0)
         return(destroy_all(philos));

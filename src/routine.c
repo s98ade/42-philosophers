@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:38:44 by sade              #+#    #+#             */
-/*   Updated: 2024/07/29 19:25:10 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/30 14:34:42 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,16 @@ int takes_forks(t_philo *philo)
 
 void philo_eats(t_philo *philo)
 {
-   // printf("-> entering --philo_eats()-- with philo: %d\n", philo->id); /* TEST */
+    printf("-> entering --philo_eats()-- with philo: %d\n", philo->id); /* TEST */
     if(takes_forks(philo) == 1)
         return ; 
     print_msg("is eating 🍝", philo, philo->data);
     pthread_mutex_lock(&philo->eating_lock);
+   // printf("lock eating mutex\n");
     philo->last_meal = get_time();
+    //printf("Philo [%d] last meal: %lld\n", philo->id, philo->last_meal);
     ++philo->times_eaten;
+    //printf("Philo [%d] goes usleep after eating\n", philo->id);
     pthread_mutex_unlock(&philo->eating_lock);
     ft_usleep(philo->time_to_eat);
     pthread_mutex_unlock(philo->l_fork);
@@ -106,10 +109,10 @@ void *routine(void *p) // test function
         return NULL;
     }
 
-    printf("+Philo ID+: %d\n", philo->id);
-    printf("+Shared data at+: %p\n", (void *)philo->data);
-    printf("+Philos data at+: %p\n", (void *)philo);
-    printf("DEAD_FLAG: %d\n", philo->data->dead_flag);
+    //printf("+Philo ID+: %d\n", philo->id);
+    //printf("+Shared data at+: %p\n", (void *)philo->data);
+    //printf("+Philos data at+: %p\n", (void *)philo);
+    //printf("DEAD_FLAG: %d\n", philo->data->dead_flag);
     /* if (philo->data != NULL) {
         printf("Num Philos: %d\n", philo->data->num_philos);
     } else {
@@ -128,5 +131,6 @@ void *routine(void *p) // test function
         philo_eats(philo);
         philo_sleep_think(philo);
     }
+    printf("im in routine about to exit for: %d\n", philo->id);
     return p;
 }

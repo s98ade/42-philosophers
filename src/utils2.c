@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:33:25 by sade              #+#    #+#             */
-/*   Updated: 2024/07/29 19:12:52 by sade             ###   ########.fr       */
+/*   Updated: 2024/07/30 14:23:58 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,12 @@ int destroy_all(t_philo *philos)
 void print_msg(char *str, t_philo *philo, t_data *data)
 {
     long long time;
-
+    
+    printf("-> entering print_msg() with philo [%d]\n", philo->id);
     pthread_mutex_lock(&data->write_lock);
     time = get_time() - philo->start_time;
-    if(!check_deaths(philo))
+    if (!philo->data->dead_flag)
         printf("%lld %d %s\n", time, philo->id, str);
     pthread_mutex_unlock(&data->write_lock);
+    printf("<- leaving print_msg() with philo [%d]\n", philo->id);
 }
