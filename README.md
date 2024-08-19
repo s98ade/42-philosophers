@@ -41,3 +41,4 @@ Example:
 ```
 
 Expected result:
+![Result in stdout](philo_exampe.png)
