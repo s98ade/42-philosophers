@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:37:16 by sade              #+#    #+#             */
-/*   Updated: 2024/07/30 14:33:49 by sade             ###   ########.fr       */
+/*   Updated: 2024/08/19 10:19:15 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,20 @@ int is_deadflag(t_philo *philo)
 
 int is_dead(t_philo *philo)
 {
-    printf("-> entering --is_dead()-- with philo: %d\n", philo->id); /* TEST */
+    // printf("-> entering --is_dead()-- with philo: %d\n", philo->id); /* TEST */
     pthread_mutex_lock(&philo->eating_lock);
     long long current_time = get_time();
-    printf("INFO PHILO [%d]: current_time: %lld, time_to_die: %ld\n", philo->id, current_time, philo->time_to_die);
-    printf("current_time - last_meal = [%lld]\n", current_time - philo->last_meal);
+    //printf("INFO PHILO [%d]: current_time: %lld, time_to_die: %ld\n", philo->id, current_time, philo->time_to_die);
+    // printf("current_time - last_meal = [%lld]\n", current_time - philo->last_meal);
     if(current_time - philo->last_meal >= philo->time_to_die)
     {
         print_msg("died 💀", philo, philo->data);
         pthread_mutex_unlock(&philo->eating_lock);
-        printf("<- leaving is_dead() with philo [%d]\n", philo->id);
+        // printf("<- leaving is_dead() with philo [%d]\n", philo->id);
         return (1);
     }
     pthread_mutex_unlock(&philo->eating_lock);
-    printf("<- leaving is_dead() with philo [%d]\n", philo->id);
+    // printf("<- leaving is_dead() with philo [%d]\n", philo->id);
     return (0);
 }
 
@@ -59,7 +59,7 @@ int check_deaths(t_philo *philo)
         {
             pthread_mutex_lock(&philo->data->dead_lock);
             philo->data->dead_flag = 1;
-            printf("DEADFLAG: [%d]\n", philo->data->dead_flag);
+            // printf("DEADFLAG: [%d]\n", philo->data->dead_flag);
             pthread_mutex_unlock(&philo->data->dead_lock);
             return(1);
         }
@@ -107,6 +107,5 @@ void *monitor_loop(void *ptr)
             break ;
         //ft_usleep(100);
     }
-    printf("im in monitor loop about to exit\n");
     return(ptr);    
 }

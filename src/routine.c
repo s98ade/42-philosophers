@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 14:38:44 by sade              #+#    #+#             */
-/*   Updated: 2024/07/30 14:34:42 by sade             ###   ########.fr       */
+/*   Updated: 2024/08/19 10:19:47 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int takes_forks(t_philo *philo)
 
 void philo_eats(t_philo *philo)
 {
-    printf("-> entering --philo_eats()-- with philo: %d\n", philo->id); /* TEST */
+    // printf("-> entering --philo_eats()-- with philo: %d\n", philo->id); /* TEST */
     if(takes_forks(philo) == 1)
         return ; 
     print_msg("is eating 🍝", philo, philo->data);
@@ -75,7 +75,7 @@ void philo_eats(t_philo *philo)
 
 void philo_sleep_think(t_philo *philo)
 {
-    printf("-> entering --philo_sleep_think()-- with philo: %d\n", philo->id); /* TEST */
+    // printf("-> entering --philo_sleep_think()-- with philo: %d\n", philo->id); /* TEST */
     print_msg("is sleeping 😴", philo, philo->data);
     ft_usleep(philo->time_to_sleep);
     print_msg("is thinking 🤔", philo, philo->data);
@@ -103,7 +103,7 @@ void *routine(void *p) // test function
     t_philo *philo;
 
     philo = (t_philo *)p;
-    printf("***entering routine with [%d]\n", philo->id);
+    //printf("***entering routine with [%d]\n", philo->id);
     if (philo == NULL) {
         printf("philo is NULL\n");
         return NULL;
@@ -121,16 +121,15 @@ void *routine(void *p) // test function
 
     if (philo->id % 2 == 0)
     {
-        printf("-> philo [%d] usleep\n", philo->id);
+        // printf("-> philo [%d] usleep\n", philo->id);
         ft_usleep(1);
     }
 
     while (!is_deadflag(philo))
     {
-        printf("-> philo %d entering routine loop\n", philo->id);
+        // printf("-> philo %d entering routine loop\n", philo->id);
         philo_eats(philo);
         philo_sleep_think(philo);
     }
-    printf("im in routine about to exit for: %d\n", philo->id);
     return p;
 }

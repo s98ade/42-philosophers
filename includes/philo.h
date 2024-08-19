@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 09:44:52 by sade              #+#    #+#             */
-/*   Updated: 2024/07/29 18:52:31 by sade             ###   ########.fr       */
+/*   Updated: 2024/08/19 10:18:46 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ typedef struct s_philo
 }              t_philo;
 
 /* init_data */
-void init_data(t_philo *philos, t_data *data, char **argv);
+void init_data(t_philo *philos, pthread_mutex_t forks[MAX_PHILO], t_data *data, char **argv);
 void init_philos(t_philo *philos, t_data *data, pthread_mutex_t *forks, char **argv);
-void init_forks(pthread_mutex_t *forks, int num_philos);
+void init_forks(pthread_mutex_t forks[MAX_PHILO], int num_philos);
 
 /* threads */
-int create_threads(t_philo *philos, t_data *data);
+int create_threads(t_philo *philos, t_data *data, pthread_mutex_t forks[MAX_PHILO]);
 
 /* routine */
 void *routine(void *p);
@@ -79,7 +79,7 @@ void check_args(char **argv);
 int ft_strlen(char *str);
 long long	get_time(void);
 int ft_usleep(size_t ms);
-int destroy_all(t_philo *philos);
+int destroy_all(t_philo *philos, pthread_mutex_t forks[MAX_PHILO]);
 void print_msg(char *str, t_philo *philo, t_data *data);
 
 #endif
