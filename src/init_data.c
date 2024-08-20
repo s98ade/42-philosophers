@@ -6,7 +6,7 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 18:28:28 by sade              #+#    #+#             */
-/*   Updated: 2024/08/19 10:18:19 by sade             ###   ########.fr       */
+/*   Updated: 2024/08/20 21:31:22 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ void init_philos(t_philo *philos, t_data *data, pthread_mutex_t *forks, char **a
         philos[i].time_to_eat = ft_atol(argv[3]);
         philos[i].time_to_sleep = ft_atol(argv[4]);
         philos[i].time_to_die = ft_atol(argv[2]);
-        philos[i].data = data; //setting data pointer for each philo
+        philos[i].data = data;
         if(pthread_mutex_init(&philos[i].eating_lock, NULL) != 0)
             ft_error("Error\nMutex\n");
         philos[i].l_fork = &forks[i];
         philos[i].r_fork = &forks[(i + 1) % data->num_philos];
-        //printf("Philosopher %d initialized with left fork %p and right fork %p\n", 
-              //  philos[i].id, (void*)philos[i].l_fork, (void*)philos[i].r_fork);
         i++;
     }
 }
@@ -62,6 +60,5 @@ void init_data(t_philo *philos, pthread_mutex_t forks[MAX_PHILO], t_data *data, 
     if(pthread_mutex_init(&data->write_lock, NULL) != 0)
         ft_error("Error\nMutex: write_lock\n");
     init_forks(forks, data->num_philos);
-    init_philos(philos, data, forks, argv);  
-   // printf("DEAD_FLAG: %d\n", data->dead_flag); 
+    init_philos(philos, data, forks, argv); 
 }

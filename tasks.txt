@@ -59,3 +59,4 @@
     28.07.: fixed passing data issue -> forgot to add data-pointer for each philo in init_data() -.-
     28.07.: fixed some messed up function calls
     29.07.: refactor fork init
+    20.08.: everything works fine (after completely destroying it after formating it)
