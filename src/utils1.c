@@ -6,38 +6,38 @@
 /*   By: sade <sade@student.hive.fi>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:08:07 by sade              #+#    #+#             */
-/*   Updated: 2024/08/19 10:20:26 by sade             ###   ########.fr       */
+/*   Updated: 2024/08/21 09:28:55 by sade             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void ft_error(char *msg)
+void	ft_error(char *msg)
 {
-    write(2, msg, ft_strlen(msg));
-    exit(1);   
+	write(2, msg, ft_strlen(msg));
+	exit(1);
 }
 
-int ft_isnum(char *str)
+int	ft_isnum(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while(str[i] != '\0')
-    {
-        if(str[i] < '0' || str[i] > '9')
-            return(1);
-        i++;
-    }
-    return(0);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-int ft_isspace(char c)
+int	ft_isspace(char c)
 {
-    if(c == '\n' || c == '\r' || c == '\v'
-	|| c == ' ' || c == '\f' || c == '\t')
-            return(1);
-    return(0);
+	if (c == '\n' || c == '\r' || c == '\v' || c == ' ' || c == '\f'
+		|| c == '\t')
+		return (1);
+	return (0);
 }
 
 long	ft_atol(const char *str)
@@ -67,16 +67,17 @@ long	ft_atol(const char *str)
 	return (nbr);
 }
 
-void check_args(char **argv)
+void	check_args(char **argv)
 {
-    if(ft_atol(argv[1]) > MAX_PHILO || ft_atol(argv[1]) <= 0 || ft_isnum(argv[1]) == 1)
-        ft_error("Error\nInvalid philo number\n");
-    if(ft_atol(argv[2]) <= 0 || ft_isnum(argv[2]) == 1)
-        ft_error("Error\nInvalid death time\n");
-    if(ft_atol(argv[3]) <= 0 || ft_isnum(argv[3]) == 1)
-        ft_error("Error\nInvalid dinning time\n");
-    if(ft_atol(argv[4]) <= 0 || ft_isnum(argv[4]) == 1)
-        ft_error("Error\nInvalid sleeping time\n");
-    if(argv[5] && (ft_atol(argv[5]) < 0 || ft_isnum(argv[5]) == 1))
-        ft_error("Error\nInvalid number\n");
+	if (ft_atol(argv[1]) > MAX_PHILO || ft_atol(argv[1]) <= 0
+		|| ft_isnum(argv[1]) == 1)
+		ft_error("Error\nInvalid philo number\n");
+	if (ft_atol(argv[2]) <= 0 || ft_isnum(argv[2]) == 1)
+		ft_error("Error\nInvalid death time\n");
+	if (ft_atol(argv[3]) <= 0 || ft_isnum(argv[3]) == 1)
+		ft_error("Error\nInvalid dinning time\n");
+	if (ft_atol(argv[4]) <= 0 || ft_isnum(argv[4]) == 1)
+		ft_error("Error\nInvalid sleeping time\n");
+	if (argv[5] && (ft_atol(argv[5]) < 0 || ft_isnum(argv[5]) == 1))
+		ft_error("Error\nInvalid number\n");
 }
